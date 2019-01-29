@@ -3,7 +3,7 @@ node{
 	        git 'https://github.com/Nikjan08/calcwebapp.git'
 	    }
 	    stage('Compile-Test'){
-	        def mvnHome = tool name: '', type: 'maven'
+	        def mvnHome = tool name:", type: 'maven'
 	        bat "${mvnHome}/bin/mvn package"
 	    }
 	    stage('Deployment'){ 
