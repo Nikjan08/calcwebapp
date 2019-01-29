@@ -4,10 +4,10 @@ node{
 	    }
 	    stage('Compile-Test'){
 	        def mvnHome = tool name: 'MAVEN', type: 'maven'
-	        sh "${mvnHome}/bin/mvn package"
+	        bat "${mvnHome}/bin/mvn package"
 	    }
 	    stage('Deployment'){ 
-	        sh 'cp target/*.war /usr/local/tomcat9/webapps'
+	        bat 'copy target/*.war tomcat9/webapps'
 	    }
 	    stage('Email-Notification'){
 	      mail bcc:'', body:'''Hi Welcome to Jenkins alerts
