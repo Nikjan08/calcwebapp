@@ -2,8 +2,8 @@ node{
 	    stage('Git-Checkout'){
 	        git 'https://github.com/Nikjan08/calcwebapp.git'
 	    }
-	    stage('Compile-Test'){
-	        def mvnHome = tool name:", type: 'maven'
+	    stage('Build'){
+	        def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
 	        bat "${mvnHome}/bin/mvn package"
 	    }
 	    stage('Deployment'){ 
