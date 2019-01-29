@@ -7,7 +7,7 @@ node{
 	        bat "${mvnHome}/bin/mvn package"
 	    }
 	    stage('Deployment'){ 
-	        bat 'copy "C:/Program Files (x86)/Jenkins/workspace/Webcalculator/target/calcwebapp.war" "%CATALINA_HOME%/webapps"'
+	        bat 'copy "%JENKINS_HOME%/workspace/target/calcwebapp.war" "%CATALINA_HOME%/webapps"'
 	    }
 	    stage('Email-Notification'){
 	      mail bcc:'', body:'''Hi Welcome to Jenkins alerts
