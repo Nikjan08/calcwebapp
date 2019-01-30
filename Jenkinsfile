@@ -3,11 +3,11 @@ node{
 	        git 'https://github.com/Nikjan08/calcwebapp.git'
 	    }
 	    stage('Build'){
-	        def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-	        bat "${mvnHome}/bin/mvn package"
+	        def mvnHome = tool name: 'MAVEN', type: 'maven'
+	        sh "${mvnHome}/bin/mvn package"
 	    }
 	    stage('Deployment'){ 
-	        bat 'copy "%JENKINS_HOME%/workspace/target/calcwebapp.war" "%CATALINA_HOME%/webapps"'
+	        sh 'cp target/*.war tomcat9/webapps'
 	    }
 	    stage('Email-Notification'){
 	      mail bcc:'', body:'''Hi Welcome to Jenkins alerts
